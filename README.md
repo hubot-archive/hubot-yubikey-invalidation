@@ -1,4 +1,4 @@
-# Yubikey Invalidation
+# YubiKey Invalidation
 
 [YubiKeys](https://www.yubico.com/products/yubikey-hardware/yubikey/) are
 pretty cool, but some models (e.g., Nano) are easy to accidentally set off.

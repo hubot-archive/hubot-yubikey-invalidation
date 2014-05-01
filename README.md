@@ -1,35 +1,12 @@
-# Hubot Example
+# Yubikey Invalidation
 
-An example script package for Hubot
+[YubiKeys](https://www.yubico.com/products/yubikey-hardware/yubikey/) are
+pretty cool, but some models (e.g., Nano) are easy to accidentally set off.
 
-[![Build Status](https://travis-ci.org/hubot-scripts/hubot-example.png)](https://travis-ci.org/hubot-scripts/hubot-example)
+This plugin watches for YubiKey strings and sends them off for "validation"
+when it sees them, which has the effect of invalidating them.
 
-## Directory Structure
+## Configuration
 
-Using the common directory structure for hubot script packages it will be easy
-to manage and allow others to easily contribute to your package.
-
-### script
-
-This directory is home to a couple of development scripts; `bootstrap` and `test`
-they're used to bootstrap the development environment and run tests
-respectively.
-
-### src
-
-This directory is home to the actual hubot scripts in the package. Your
-`index.coffee` entry point will load the scripts from this directory.
-
-### test
-
-This directory is home to any tests you write for your scripts. This example
-package uses Mocha, Chai and Sinon to manage writing tests.
-
-## Advantages of Building a Package
-
-Some of the advantages of building an npm package for your hubot script(s) are:
-
-* You don't need to rely on when hubot-scripts package is released.
-* You can specify dependencies in the `package.json` rather than have users
-  manually specify them
-* You can easily add tests using your favourite frameworks and libraries
+* `HUBOT_YUBIKEY_API_ID`: API ID (the numeric one) from
+  <https://upgrade.yubico.com/getapikey/>

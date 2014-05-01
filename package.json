@@ -1,0 +1,39 @@
+{
+  "name": "hubot-yubikey-invalidation",
+  "description": "Sends any accidental Yubikey presses to Yubico so they are invalidated",
+  "version": "0.0.1",
+  "author": "Andy Lindeman <andy@lindeman.io>",
+  "license": "MIT",
+
+  "keywords": [
+    "hubot",
+    "hubot-scripts",
+    "yubikey"
+  ],
+
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hubot-scripts/hubot-yubikey-invalidation.git"
+  },
+
+  "bugs": {
+    "url": "https://github.com/hubot-scripts/hubot-yubikey-invalidation/issues"
+  },
+
+  "dependencies": {
+    "coffee-script": "~1.6"
+  },
+
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*",
+    "sinon-chai": "*",
+    "sinon": "*"
+  },
+
+  "main": "index.coffee",
+
+  "scripts": {
+    "test": "script/test"
+  }
+}

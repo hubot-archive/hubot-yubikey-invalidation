@@ -23,15 +23,17 @@ module.exports = (robot) ->
   dvorakCharset  = "jxe.uidchtnbpygk"
   dvorakOtpRegex = new RegExp("^([#{dvorakCharset}]{44})$")
 
+  messagePrefix = "Was that your YubiKey? :trollface:"
+
   generateNonce = ->
     crypto.pseudoRandomBytes(16).toString('hex')
 
   invalidateOtp = (msg, otp) ->
     https.get "#{validationUrl}?id=#{apiId}&otp=#{otp}&nonce=#{generateNonce()}", (res) ->
       if res.statusCode != 200
-        msg.reply "I tried to invalidate that OTP for you, but I got a #{res.statusCode} error from the server :cry:"
+        msg.reply "#{messagePrefix} I tried to invalidate that OTP for you, but I got a #{res.statusCode} error from the server :cry:"
       else
-        msg.reply "Was that your Yubikey :trollface:? I went ahead and invalidated that OTP for you :lock:"
+        msg.reply "#{messagePrefix} I went ahead and invalidated that OTP for you :lock:"
 
   invalidateDvorakOtp = (msg, dvorakOtp) ->
     otp = dvorakOtp
@@ -42,11 +44,8 @@ module.exports = (robot) ->
 
   missingEnviroment = (msg) ->
     missingSomething = false
-    unless validationUrl?
-      msg.send "Yubikey Validation URL is missing: ensure that HUBOT_YUBIKEY_VALIDATION_URL is set"
-      missingSomething = true
     unless apiId?
-      msg.send "Yubikey Api ID is missing: ensure that HUBOT_YUBIKEY_API_ID is set"
+      msg.reply "#{messagePrefix} I'd like to invalidate that OTP for you, but I'm missing the HUBOT_YUBIKEY_API_ID environment variable. Maybe your local hubot maintainer can help you?"
       missingSomething = true
     return missingSomething
 

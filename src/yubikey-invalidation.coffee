@@ -19,11 +19,11 @@ https  = require 'https'
 
 module.exports = (robot) ->
   charset        = "cbdefghijklnrtuv"
-  otpRegex       = new RegExp("^([#{charset}]{44})$")
+  otpRegex       = new RegExp("\\b([#{charset}]{44})$")
   dvorakCharset  = "jxe.uidchtnbpygk"
-  dvorakOtpRegex = new RegExp("^([#{dvorakCharset}]{44})$")
+  dvorakOtpRegex = new RegExp("\\b([#{dvorakCharset}]{44})$")
 
-  messagePrefix = "Was that your YubiKey? :trollface:"
+  messagePrefix = "Was that your YubiKey?"
 
   generateNonce = ->
     crypto.pseudoRandomBytes(16).toString('hex')
@@ -31,9 +31,9 @@ module.exports = (robot) ->
   invalidateOtp = (msg, otp) ->
     https.get "#{validationUrl}?id=#{apiId}&otp=#{otp}&nonce=#{generateNonce()}", (res) ->
       if res.statusCode != 200
-        msg.reply "#{messagePrefix} I tried to invalidate that OTP for you, but I got a #{res.statusCode} error from the server :cry:"
+        msg.reply "#{messagePrefix} I tried to invalidate that OTP for you, but I got a #{res.statusCode} error from the server 😢"
       else
-        msg.reply "#{messagePrefix} I went ahead and invalidated that OTP for you :lock:"
+        msg.reply "#{messagePrefix} I went ahead and invalidated that OTP for you 🔒"
 
   invalidateDvorakOtp = (msg, dvorakOtp) ->
     otp = dvorakOtp

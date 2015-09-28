@@ -1,7 +1,7 @@
 {
   "name": "hubot-yubikey-invalidation",
   "description": "Sends any accidental Yubikey presses to Yubico so they are invalidated",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Andy Lindeman <andy@lindeman.io>",
   "license": "MIT",
 

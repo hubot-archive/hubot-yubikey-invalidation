@@ -33,7 +33,7 @@ module.exports = (robot) ->
       if res.statusCode != 200
         msg.reply "#{messagePrefix} I tried to invalidate that OTP for you, but I got a #{res.statusCode} error from the server 😢"
       else
-        msg.reply "#{messagePrefix} I went ahead and invalidated that OTP for you 🔒"
+        msg.reply "#{messagePrefix} I went ahead and invalidated that OTP for you 🔒 You can disable accidental OTP triggers via https://support.yubico.com/hc/en-us/articles/360013714379-Accidentally-Triggering-OTP-Codes-with-Your-Nano-YubiKey"
 
   invalidateDvorakOtp = (msg, dvorakOtp) ->
     otp = dvorakOtp

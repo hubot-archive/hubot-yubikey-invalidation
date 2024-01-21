@@ -19,9 +19,9 @@ https  = require 'https'
 
 module.exports = (robot) ->
   charset        = "cbdefghijklnrtuv"
-  otpRegex       = new RegExp("(cccccc[#{charset}]{38})$")
+  otpRegex       = new RegExp("(ccccc[#{charset}]{39})$")
   dvorakCharset  = "jxe.uidchtnbpygk"
-  dvorakOtpRegex = new RegExp("(jjjjjj[#{dvorakCharset}]{38})$")
+  dvorakOtpRegex = new RegExp("(jjjjj[#{dvorakCharset}]{39})$")
 
   messagePrefix = "Was that your YubiKey?"
 
